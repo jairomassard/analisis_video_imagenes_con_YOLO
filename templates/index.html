@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLOv5 Detection</title>
+    <script>
+        function toggleFileInput() {
+            const detectionOption = document.getElementById("detection_option").value;
+            const fileInput = document.getElementById("file_input");
+
+            if (detectionOption === 'video' || detectionOption === 'image') {
+                fileInput.style.display = 'block';
+            } else {
+                fileInput.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>YOLOv5 Detection Interface</h1>
+    <form method="POST" action="/detect" enctype="multipart/form-data">
+        <label for="detection_option">Choose Detection Type:</label>
+        <select id="detection_option" name="detection_option" onchange="toggleFileInput()">
+            <option value="camera">Camera Detection</option>
+            <option value="video">Video Detection</option>
+            <option value="image">Image Detection</option>
+        </select>
+        <div id="file_input" style="display:none;">
+            <label for="file">Upload File:</label>
+            <input type="file" id="file" name="file">
+        </div>
+        <button type="submit">Start Detection</button>
+    </form>
+</body>
+
+</html>
